@@ -51,7 +51,7 @@ char *FileOperation::RemoveLastSeparator(char *path, char sep) {
     int indexOfLatSep;
     int lengthOfPath;
 
-    if ( path == NULL || sep == NULL)
+    if ( path == NULL)
         return NULL;
 
     lastSep = strrchr(path, sep);
@@ -100,6 +100,8 @@ bool FileOperation::IsADirectory(char *path) {
     struct stat sb;
     int res = stat(path, &sb);
 
+    if(res == -1)
+        return false;
     return S_ISDIR(sb.st_mode);
 }
 //----------------------------------------------------------------------------------------------------

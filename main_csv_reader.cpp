@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     int numberOfFiles = csvFilesPath.size();
     int numberOfFields;
 
-    for (int j = 0; j < csvFilesPath.size(); j++) {
+    for (unsigned int j = 0; j < csvFilesPath.size(); j++) {
         cout << endl << "\t-> File: " << basename(csvFilesPath[j]) << "<-" << endl << endl;
         f[j] = new CSVFile(csvFilesPath[j]);
         f[j]->Read();    
@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
         }
 
 
-        for (int i = 0; i < fields.size(); i++) {
+        for (unsigned int i = 0; i < fields.size(); i++) {
             double mean = MathUtilities::ComputeMean(fields[i]);
             double meanDeviation = MathUtilities::ComputeMeanDeviation(fields[i]);
             double standardDev = MathUtilities::ComputeStandardDeviation(fields[i]);
@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
     }
 
     
-    for (int i = 0; i < csvFilesPath.size(); i++) {
+    for (unsigned int i = 0; i < csvFilesPath.size(); i++) {
         delete f[i];
         delete csvFilesPath[i];
     }

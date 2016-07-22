@@ -32,11 +32,11 @@ namespace MathUtilities {
     
 
     /*
-     * Intput: map -> std::map
-     *         				member -> member of the struct that is in the map,
-     *             			     				 it is used only to get the type that shall be returned
-     *      	   				offset -> offset to the member of the struct,
-     *         		         				can be retrived by used offsetof (stddef.h)
+     * Intput: map    -> std::map
+     *         member -> member of the struct that is in the map,
+     *             	     it is used only to get the type that shall be returned
+     *         offset -> offset to the member of the struct,
+     *         		     can be retrived by used offsetof (stddef.h)
      */
     template <typename M, typename T>
     T ComputeMean(M map,T member, int offset) {
@@ -76,7 +76,7 @@ namespace MathUtilities {
 
 
     /*
-     * Intput: map -> std::map
+     * Intput: map    -> std::map
      *         member -> member of the struct that is in the map,
      *                   it is used only to get the type that shall be returned
      *         offset -> offset to the member of the struct,
@@ -121,7 +121,7 @@ namespace MathUtilities {
     }
 
     /*
-     * Intput: map -> std::map
+     * Intput: map    -> std::map
      *         member -> member of the struct that is in the map,
      *                   it is used only to get the type that shall be returned
      *         offset -> offset to the member of the struct,

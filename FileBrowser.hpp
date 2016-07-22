@@ -16,7 +16,8 @@ namespace FileOperation {
         /* Methods */
         public:
             /*
-             * Find all the files in the folder and sub-folders that have the wanted extension.
+             * Find all the files in the folder and sub-folders that have the wanted extension,
+             * and/or contain a specified string in their name.
              * Input:
              * folderPath: path tho the starting folder to begin the look up
              * extension: extension of the file you want to find, not used if NULL
@@ -30,7 +31,8 @@ namespace FileOperation {
              */
             void FindFiles(char *folderPath, char *extension, char *searchString, int maxRecursion, vector<char*> &foundFiles);
             /*
-             * Find all the files in the folder (only) that have the wanted extension.
+             * Find all the files in the folder (only) that have the wanted extension,
+             * and/or contain a specified string in their name.
              * Input:
              * folderPath: path tho the starting folder to begin the look up
              * extension: extension of the file you want to find, not used if NULL

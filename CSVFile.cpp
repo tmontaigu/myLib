@@ -38,32 +38,8 @@ void CSVFile::Read() {
         string line;
         getline(csvFile, line);
         this->ReadLine(line, fields);
-        /*
-        getline(csvFile, value, ',');
-        value.erase(remove(value.begin(), value.end(), '\n'), value.end());
-
-        if (value.empty())
-            continue;
-
-        
-        if (PercentageOfdigits(value) > 60.0) {
-            this->fields[currentField].push_back(strtod(value.c_str(), NULL));
-        }
-
-        currentField++;
-        if(currentField == numberOfFields)
-            currentField =0;
-            */
     }
-  // should go into a print csv function  
-  /*
-    for (int i = 0; i < this->fields[1].size(); i++){ 
-        for (int j = 0; j < this->fields.size(); j++) {
-            cerr << this->fields[j][i] << ",";
-        }
-       cerr << endl; 
-    }
-*/
+ 
 
     csvFile.close();
 }
@@ -90,6 +66,7 @@ void CSVFile::Analyze(string firstLine, std::vector<valuesFields> &fields, int &
         fieldCounter++;
 
         vector<double> newField;
+
         newField.push_back(strtod(value.c_str(),NULL));
 
         fields.push_back(newField);
@@ -106,8 +83,9 @@ void CSVFile::ReadLine(string line, std::vector<valuesFields> &fields) {
         if (currentField > fields.size()) {
             cout << "ERROR too many fields " << endl;
         }
-        fields[currentField].push_back(strtod(value.c_str(),NULL));
-
+        double val = strtod(value.c_str(),NULL);
+        if (val != 0 && val > -555 && val < 555)
+            fields[currentField].push_back(val);
         currentField++;
     }
 }

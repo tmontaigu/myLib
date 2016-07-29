@@ -47,6 +47,10 @@ void ProgressBar::ShowProgress(float progress, int min, int max) {
     cout << "( " << min << "/" << max << " )" << "\r";
     cout.flush();
 }
-
-
-    
+//----------------------------------------------------------------------------------------------------
+void ProgressBar::Clear() {
+    for (int i = 0; i < 72; i++) {
+        cout  << " ";
+    }
+    cout << "\r" ;
+}

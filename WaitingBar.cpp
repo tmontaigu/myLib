@@ -51,7 +51,6 @@ void WaitingBar::Show() {
             currentProgress -= distanceToEdge; 
         }
     }
-
     else {
         if (direction == Forward)
             currentProgress += speed;
@@ -70,4 +69,11 @@ void WaitingBar::ChangeDirection() {
         this->direction = Backward;
     else if (this->direction == Backward)
         this->direction = Forward;
+}
+//----------------------------------------------------------------------------------------------------
+void WaitingBar::Clear() {
+    for (int i = 0; i < 72; i++) {
+        cout  << " ";
+    }
+    cout << "\r" ;
 }

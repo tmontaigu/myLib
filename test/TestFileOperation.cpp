@@ -1,4 +1,4 @@
-#include "../FileOperation.hpp"
+#include "FileOperation.hpp"
 
 #include <iostream>
 #include <cstring>
@@ -44,7 +44,7 @@ bool TestRemoveExtension(char *path, char* expectedResult, char dot, char sep) {
         cout << "Got: " << res << " Expected: " << expectedResult << endl;
         failed = true;
     }
-    free(res);
+    delete[] res;
     return failed;
 
 

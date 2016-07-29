@@ -4,9 +4,12 @@ CC_FLAGS = -Wall -ggdb -O0
 #------------------------------------------------------------------------------
 # Folders where the makefile will look for the sources of the rules.
 #------------------------------------------------------------------------------
-VPATH = test:obj
+VPATH = test:obj:src:include
 
-
+#------------------------------------------------------------------------------
+# Paths to the .hpp files used
+#----------------------------------------------------------------------------
+INCLUDES= -I include
 #------------------------------------------------------------------------------
 # List of files to generate the executables
 #------------------------------------------------------------------------------
@@ -15,6 +18,10 @@ FILES_CSVFile = main_csv_reader.cpp \
 				CSVFile.cpp \
 				FileBrowser.cpp \
 				FileOperation.cpp 
+				
+FILES_Demo_Bar = main_demo_bar.cpp \
+				ProgressBar.cpp \
+				WaitingBar.cpp
 
 
 #----------------------------Test files----------------------------------------
@@ -27,6 +34,7 @@ FILES_Test_FileOperation = TestFileOperation.cpp \
 #------------------------------------------------------------------------------
 
 OBJS_CSVFile = $(FILES_CSVFile:.cpp=.o)
+OBJS_Demo_Bar = $(FILES_Demo_Bar:.cpp=.o)
 
 OBJS_Test_FileOperation = $(FILES_Test_FileOperation:.cpp=.o)
 
@@ -43,6 +51,10 @@ CSVFile_Reader: $(patsubst %,obj/%,$(OBJS_CSVFile))
 	$(COMPILE_EXECUTABLE)
 	@echo Success!
 
+Demo_Bar: $(patsubst %,obj/%,$(OBJS_Demo_Bar))
+	$(COMPILE_EXECUTABLE)
+	@echo Success!
+
 
 Test_FileOperation: $(patsubst %,obj/%,$(OBJS_Test_FileOperation))
 	$(COMPILE_EXECUTABLE)
@@ -50,7 +62,7 @@ Test_FileOperation: $(patsubst %,obj/%,$(OBJS_Test_FileOperation))
 
 
 obj/%.o: %.cpp
-	$(CCC)  $(CC_FLAGS) -c $< -o $@
+	$(CCC)  $(INCLUDES) $(CC_FLAGS) -c $< -o $@
 
 
 clean:

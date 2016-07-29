@@ -13,15 +13,15 @@ namespace FileOperation {
      *  sep: Is the path separator
      *
      *  Returns an allocated string identical to the original but without the extension.
-     *  It must be freed when you're finished with it.
+     *  It must be deleted when you're finished with it.
      *
      *  If you pass in NULL or the new string can't be allocated,
      *  it will return NULL
      *  
      *  Usage :
      *     char *s;
-     *     s = remove_ext ("hello.txt", '.', '/'))); 
-     *     free (s);
+     *     s = RemoveExtension("hello.txt", '.', '/'))); 
+     *     delete[] s;
      */
     char *RemoveExtension(char *mystr, char dot, char sep);
     /*

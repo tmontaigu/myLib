@@ -69,7 +69,21 @@ class ProgressBar {
          *
          */ 
         void ShowProgress(float progress, int currentTask, int max);
-	
+        /*
+         * Clears the bar so that it is not displayed anymore.
+         * Can be used to output things while still having the bar display at
+         * the bottom of the commanc line
+         *
+         * Ex:
+         *  WaitingBar p('=', 0.2,10); 
+         *  for (int i = 0; i < 30; i++) {
+         *     p.Clear(); 
+         *     cout << i << " seconds elapsed" << endl;
+         *     p.Show();
+         *     sleep(1);
+         *  }
+         */
+        void Clear();
 
 };
 #endif

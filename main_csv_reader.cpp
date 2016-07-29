@@ -6,7 +6,9 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <libgen.h>
+#include <cerrno>
 
 using namespace std;
 using namespace FileOperation;
@@ -27,9 +29,18 @@ int main(int argc, char **argv) {
 
     int numberOfFiles = csvFilesPath.size();
     int numberOfFields;
+	string outputFile = string("Report_") + string(basename(argv[1]));
+    ofstream report(outputFile.c_str());
+	if (!report) {
+		cout << "Error creating the report file: " << strerror(errno) << endl;
+		report.fail();
+		return 0;
+	}
+
 
     for (unsigned int j = 0; j < csvFilesPath.size(); j++) {
         cout << endl << "\t-> File: " << basename(csvFilesPath[j]) << "<-" << endl << endl;
+        report << endl << "\t-> File: " << basename(csvFilesPath[j]) << "<-" << endl << endl;
         f[j] = new CSVFile(csvFilesPath[j]);
         f[j]->Read();    
 
@@ -67,6 +78,15 @@ int main(int argc, char **argv) {
             cout << "   ";
             cout << "\tMean Deviation: ";
             cout << setw(15)  << meanDeviation << endl; 
+
+            report << "\tField: " << setw(10); fieldsName == NULL ? report << i : report << fieldsName[i];
+            report << "\tMean: ";
+            report << setw(15) << mean; 
+            report << "\tStandard Deviation: ";
+            report << setw(15) << standardDev;
+            report << "   ";
+            report << "\tMean Deviation: ";
+            report << setw(15)  << meanDeviation << endl; 
             
         }
         fields.clear();
@@ -81,7 +101,17 @@ int main(int argc, char **argv) {
         cout << "\tMean Deviation : " << setw(15) << MathUtilities::ComputeMeanDeviation(meanDevs[i], numberOfFiles);
         cout << endl;
     }
+	
+    report << endl<<  "\t-> OVERALL: Folder:" << dirname(csvFilesPath[1]) << " <-" << endl << endl;
+    for (int i = 0; i <numberOfFields; i++) {
+        report << "\tField: " << setw(10); fieldsName == NULL ? report << i : report << fieldsName[i];
+        report << "\tMean: " << setw(15) << MathUtilities::ComputeMean(means[i], numberOfFiles);
+        report << "\tStandard Deviation " << setw(15) << MathUtilities::ComputeStandardDeviation(standardDevs[i], numberOfFiles);
+        report << "\tMean Deviation : " << setw(15) << MathUtilities::ComputeMeanDeviation(meanDevs[i], numberOfFiles);
+        report << endl;
+    }
 
+	cout << outputFile << endl;
     
     for (unsigned int i = 0; i < csvFilesPath.size(); i++) {
         delete f[i];

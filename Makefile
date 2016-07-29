@@ -41,12 +41,12 @@ default: CSVFile_Reader
 
 CSVFile_Reader: $(patsubst %,obj/%,$(OBJS_CSVFile))
 	$(COMPILE_EXECUTABLE)
-	@echo OK
+	@echo Success!
 
 
 Test_FileOperation: $(patsubst %,obj/%,$(OBJS_Test_FileOperation))
 	$(COMPILE_EXECUTABLE)
-	@echo OK
+	@echo Success!
 
 
 obj/%.o: %.cpp

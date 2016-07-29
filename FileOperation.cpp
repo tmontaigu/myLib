@@ -92,7 +92,6 @@ bool FileOperation::Exists(char *path) {
     struct stat sb;
     int res = stat(path, &sb);
 
-    /* Exists but is not a folder */
     return res == 0;
 }
 //----------------------------------------------------------------------------------------------------

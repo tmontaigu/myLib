@@ -84,7 +84,7 @@ void CSVFile::ReadLine(string line, std::vector<valuesFields> &fields) {
             cout << "ERROR too many fields " << endl;
         }
         double val = strtod(value.c_str(),NULL);
-        if (val != 0 && val > -555 && val < 555)
+        if (/*val != 0 && */val > -555 && val < 555)
             fields[currentField].push_back(val);
         currentField++;
     }

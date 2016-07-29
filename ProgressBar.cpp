@@ -49,7 +49,8 @@ void ProgressBar::ShowProgress(float progress, int min, int max) {
 }
 //----------------------------------------------------------------------------------------------------
 void ProgressBar::Clear() {
-    for (int i = 0; i < 72; i++) {
+    // + 2 because of the '[' and ']' char that are not counted in the width
+    for (int i = 0; i < this->barWidth + 2; i++) {
         cout  << " ";
     }
     cout << "\r" ;

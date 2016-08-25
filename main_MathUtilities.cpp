@@ -53,4 +53,13 @@ int main(int argc, char **argv) {
     cout << " mean deviation " << meanDev << endl;
     cout << " standard deviation " << stdDev << endl;
 
+
+    typedef map<int, double> tt;
+    tt t;
+    t[0] = 2.2;
+    t[1] = 2.2;
+    t[2] = 2.2;
+    mean = ComputeMean<tt,double>(t);
+    cout << "mean: " << mean << endl;
+
 }

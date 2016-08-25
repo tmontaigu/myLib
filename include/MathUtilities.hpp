@@ -52,6 +52,19 @@ namespace MathUtilities {
         return mean/map.size();
     }
 
+    template <typename M, typename T>
+    T ComputeMean(M map){
+    	typename M::iterator it;
+    	//typedef M::mapped_type T;
+
+    	T mean = 0;
+
+        for(it = map.begin(); it != map.end(); ++it) {
+            mean += it->second;
+        }
+        return mean/map.size();
+    }
+
 
 //----------------------------------------------------------------------------------------------------
     /* Mean Deviation */

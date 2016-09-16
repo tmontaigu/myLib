@@ -4,7 +4,6 @@
 #include <vector>
 #include <map>
 #include <cmath>
-#include <stddef.h> //offsetof
 
 #include <iostream>
 
@@ -64,6 +63,8 @@ namespace MathUtilities {
         }
         return mean/map.size();
     }
+
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -161,36 +162,6 @@ namespace MathUtilities {
         T result = pow(value,2);
         return sqrt(result);
     }
-
-    template <typename M>
-    void test_test(M map) {
-        typename M::iterator it;
-        for(it = map.begin(); it != map.end(); ++it)
-            std::cout << it->first << std::endl;
-    }
-
-    template <typename M, typename S, typename T>
-    void test_test2(M map, S structure, T member) {
-        typename M::iterator it;
-        char *baseAdress;
-        int offset =  offsetof(S, member);
-
-        T *b; 
-
-        for(it = map.begin(); it != map.end(); ++it) {
-            std::cout << it->first;
-            baseAdress = (char *) (&it->second);
-            b = (T *)(baseAdress+offset);
-            std::cout << b << endl; 
-        }
-    }
-
-
-
-
-
-
-
 
 
 };//namespace

@@ -30,9 +30,9 @@ int main(int argc, char **argv) {
     cout << "Computed StandardDeviation Vector(2.2,2.2) " << ComputeStandardDeviation(a) << endl;
 
 
+    /* Functions to compute mean, std mean, etc of a std::map that map a struct */
 
     typedef map<int, x> hh;
-    
     hh h;
     
     x xx = { 11,2.2 };
@@ -41,11 +41,7 @@ int main(int argc, char **argv) {
     h[1] = xx;
     h[2] = yy;
 
-
-    //test_test(h);
-    
-    //test_test2(h,xx, xx.member_a);
-    x zz;
+    x zz; //Needed to be able to give the member of the struct for which we want the compute the stats
     double mean  = ComputeMean(h, zz.member_b, offsetof(x, member_b));
     double  meanDev  = ComputeMeanDeviation(h, zz.member_b, offsetof(x, member_b));
     double  stdDev  = ComputeStandardDeviation(h, zz.member_b, offsetof(x, member_b));

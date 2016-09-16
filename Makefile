@@ -4,7 +4,7 @@ CC_FLAGS = -Wall -ggdb -O0
 #------------------------------------------------------------------------------
 # Folders where the makefile will look for the sources of the rules.
 #------------------------------------------------------------------------------
-VPATH = test:obj:src:include
+VPATH = test:obj:src:include:example
 
 #------------------------------------------------------------------------------
 # Paths to the .hpp files used

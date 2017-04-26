@@ -1,6 +1,7 @@
 #include "FileOperation.hpp"
 
 #include <iostream>
+#include <cstring>
 #include <fstream>
 
 #include <sys/stat.h>
@@ -16,7 +17,7 @@ char *FileOperation::RemoveExtension(char* mystr, char dot, char sep) {
 
     if (mystr == NULL)
         return NULL;
-    if (/*(retstr = (char*)malloc (strlen (mystr) + 1))*/ (retstr = new char[strlen(mystr) + 1] ) == NULL)
+    if ((retstr = new char[strlen(mystr) + 1] ) == NULL)
         return NULL;
     // Make a copy and find the relevant characters.
 
@@ -28,13 +29,13 @@ char *FileOperation::RemoveExtension(char* mystr, char dot, char sep) {
     // If it has an extension separator.
 
     if (lastdot != NULL) {
-    // and it's before the extenstion separator.
+        // and it's before the extension separator.
         if (lastsep != NULL) {
             if (lastsep < lastdot) {
-             // then remove it.
-              *lastdot = '\0';
+                // then remove it.
+                *lastdot = '\0';
             }
-        }  
+        }
         else {
             // Has extension separator with no path separator.
             *lastdot = '\0';
@@ -71,12 +72,12 @@ char *FileOperation::RemoveLastSeparator(char *path, char sep) {
 }
 //----------------------------------------------------------------------------------------------------
 bool FileOperation::IsFileExtension(char *path, char *extension) {
-   char *theExtension;
+    char *theExtension;
 
-   theExtension = strrchr(path, extension[0]);
-   if (theExtension==NULL)
-       return false;
-   return (strcmp(theExtension, extension) == 0);
+    theExtension = strrchr(path, extension[0]);
+    if (theExtension==NULL)
+        return false;
+    return (strcmp(theExtension, extension) == 0);
 }
 //----------------------------------------------------------------------------------------------------
 bool FileOperation::FileNameContains(char *filename, char *string) {
@@ -119,7 +120,7 @@ bool FileOperation::IsAFile(char *path) {
 //----------------------------------------------------------------------------------------------------
 long FileOperation::FileSize(char *filePath) {
     ifstream file(filePath);
-    
+
     long size = FileSize(file);
     file.close();
     return size;

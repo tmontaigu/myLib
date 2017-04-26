@@ -11,7 +11,7 @@ bool TestRemoveExtension(char *path, char*expectedResult, char dot, char sep);
 bool TestRemoveLastSeperator(char *path, char* expectedResult, char sep);
 
 int main(int argc, char **argv) {
-        
+
     cout << "-> Test FileOperation <-" << endl;
 
     /* RemoveExtension Tests */
@@ -54,7 +54,7 @@ bool TestRemoveLastSeperator(char *path, char* expectedResult, char sep) {
     bool failed = false;
 
     res = RemoveLastSeparator(path, sep);
-        
+
     if (expectedResult == NULL && res == NULL)
         return false;
 
@@ -65,6 +65,4 @@ bool TestRemoveLastSeperator(char *path, char* expectedResult, char sep) {
     }
     delete[] res;
     return failed;
-
-
 }

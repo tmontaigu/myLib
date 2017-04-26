@@ -17,10 +17,10 @@ namespace FileOperation {
      *
      *  If you pass in NULL or the new string can't be allocated,
      *  it will return NULL
-     *  
+     *
      *  Usage :
      *     char *s;
-     *     s = RemoveExtension("hello.txt", '.', '/'))); 
+     *     s = RemoveExtension("hello.txt", '.', '/')));
      *     delete[] s;
      */
     char *RemoveExtension(char *mystr, char dot, char sep);
@@ -34,11 +34,11 @@ namespace FileOperation {
      * RemoveLastSeparator("/home/yoshi/", '/') -> /home/yoshi
      * RemoveLastSeparator("/home/yoshi", '/')  -> NULL
      *
-     * The returned string must be deleted with 
+     * The returned string must be deleted with
      * delete[]
-     */ 
+     */
     char *RemoveLastSeparator(char *path, char sep);
-    
+
     bool IsFileExtension(char *path, char *extension);
     bool FileNameContains(char *filename, char *string);
 
@@ -48,7 +48,7 @@ namespace FileOperation {
     bool IsADirectory(char *path);
     bool IsAFolder(char *path);
 
-    bool IsAFile(char *path); 
+    bool IsAFile(char *path);
 
     long FileSize(char *filePath);
     long FileSize(std::ifstream &file);

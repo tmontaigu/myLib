@@ -31,8 +31,8 @@ void FileOperation::FileBrowser::FindFiles(char *folderPath, char *extension, ch
     char filePath[MAX_LENGTH];
 
     if ( !IsADirectory(folderPath) ) {
-       cout << folderPath << " is not a directory " << endl;
-       return ;
+        cout << folderPath << " is not a directory " << endl;
+        return ;
     }
 
     if ( (dir = opendir(folderPath)) == NULL) {
@@ -63,7 +63,7 @@ void FileOperation::FileBrowser::FindFiles(char *folderPath, char *extension, ch
                 }
             }
             else if (extension == NULL) {
-                if (FileNameContains(filePath, searchString)) { 
+                if (FileNameContains(filePath, searchString)) {
                     char *file = new char[strlen(filePath)+1];
                     memcpy(file, filePath, strlen(filePath)+1);
                     foundFiles.push_back(file);
@@ -77,7 +77,7 @@ void FileOperation::FileBrowser::FindFiles(char *folderPath, char *extension, ch
     }
     free(dir);
     free(dp);
-    return;    
+    return;
 }
 
 

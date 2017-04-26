@@ -22,7 +22,7 @@ WaitingBar::WaitingBar(char progressSign, float speed, int movingBarWidth, int b
     this->speed = speed;
     this->direction = Forward;
     this->currentProgress = (float) movingBarWidth/barWidth ;
-    
+
 }
 //----------------------------------------------------------------------------------------------------
 WaitingBar::~WaitingBar() {
@@ -48,7 +48,7 @@ void WaitingBar::Show() {
             currentProgress += distanceToEdge;
         else if (direction == Backward) {
             distanceToEdge -= (float) movingBarWidth/barWidth;
-            currentProgress -= distanceToEdge; 
+            currentProgress -= distanceToEdge;
         }
     }
     else {

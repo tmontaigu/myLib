@@ -18,7 +18,7 @@ ProgressBar::ProgressBar(char progressSign, char barHead, int barWidth) {
 }
 //----------------------------------------------------------------------------------------------------
 ProgressBar::~ProgressBar() {
-    
+
 }
 //----------------------------------------------------------------------------------------------------
 void ProgressBar::ShowProgress(float progress) {
@@ -34,7 +34,7 @@ void ProgressBar::ShowProgress(float progress) {
     cout.flush();
 }
 //----------------------------------------------------------------------------------------------------
-void ProgressBar::ShowProgress(float progress, int min, int max) { 
+void ProgressBar::ShowProgress(float progress, int min, int max) {
 
     cout << "[";
     int pos = (int) (this->barWidth * progress);

@@ -25,10 +25,10 @@ namespace MathUtilities {
 
     template <typename T>
     T ComputeMean(vector<T> value) {
-       T *array = &value[0];
-       return ComputeMean(array, value.size());
+        T *array = &value[0];
+        return ComputeMean(array, value.size());
     }
-    
+
 
     /*
      * Intput: map    -> std::map
@@ -53,10 +53,10 @@ namespace MathUtilities {
 
     template <typename M, typename T>
     T ComputeMean(M map){
-    	typename M::iterator it;
-    	//typedef M::mapped_type T;
+        typename M::iterator it;
+        //typedef M::mapped_type T;
 
-    	T mean = 0;
+        T mean = 0;
 
         for(it = map.begin(); it != map.end(); ++it) {
             mean += it->second;
@@ -70,7 +70,7 @@ namespace MathUtilities {
 //----------------------------------------------------------------------------------------------------
     /* Mean Deviation */
 //----------------------------------------------------------------------------------------------------
-    
+
     template <typename T>
     T ComputeMeanDeviation(T value[], int size) {
         T mean = ComputeMean(value, size);
@@ -113,7 +113,7 @@ namespace MathUtilities {
     }
 
 
-    
+
 //----------------------------------------------------------------------------------------------------
     /* Standard Deviation */
 //----------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ namespace MathUtilities {
         result /= size;
         return sqrt(result);
     }
-    
+
     template <typename T>
     T ComputeStandardDeviation(vector<T> value) {
         T *array = &value[0];

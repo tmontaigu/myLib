@@ -17,7 +17,7 @@ DECL_FIFO_QUEUE(integers, struct fifo_element)
 
 int main(int argc, char **argv) {
 
-    struct fifo_element *e, *popped = malloc(sizeof * e);
+    struct fifo_element *e =  malloc(sizeof * e), *popped = NULL;
     e->next = NULL;
     e->prev = NULL;
     e->a = 0;
@@ -31,8 +31,6 @@ int main(int argc, char **argv) {
     assert(popped = e);
     assert(q->size == 0);
     printf("Size: %d\n", q->size);
-
-
 
     free(q);
     return 0;

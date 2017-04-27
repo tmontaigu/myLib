@@ -5,7 +5,12 @@
 #include <fstream>
 
 #include <sys/stat.h>
+
+#ifdef __unix__
 #include <dirent.h>
+#elif defined _WIN32
+#include <Windows.h>
+#endif
 
 using namespace std;
 using namespace FileOperation;
@@ -22,7 +27,7 @@ char *FileOperation::RemoveExtension(char* mystr, char dot, char sep) {
     // Make a copy and find the relevant characters.
 
 
-    strcpy (retstr, mystr);
+    strcpy(retstr, mystr);
     lastdot = strrchr (retstr, dot);
     lastsep = (sep == 0) ? NULL : strrchr (retstr, sep);
 
@@ -96,12 +101,28 @@ bool FileOperation::Exists(char *path) {
 }
 //----------------------------------------------------------------------------------------------------
 bool FileOperation::IsADirectory(char *path) {
-    struct stat sb;
-    int res = stat(path, &sb);
 
-    if(res == -1)
-        return false;
-    return S_ISDIR(sb.st_mode);
+
+#ifdef __unix__
+
+	struct stat sb;
+	int res = stat(path, &sb);
+
+	if (res == -1)
+		return false;
+	return S_ISDIR(sb.st_mode);
+#elif defined _WIN32
+	DWORD ftyp = GetFileAttributesA(path);
+	if (ftyp == INVALID_FILE_ATTRIBUTES)
+		return false;  //something is wrong with your path!
+
+	if (ftyp & FILE_ATTRIBUTE_DIRECTORY)
+		return true;   // this is a directory!
+
+	return false;    // this is not a directory!
+#endif
+
+
 }
 //----------------------------------------------------------------------------------------------------
 bool FileOperation::IsAFolder(char *path) {
@@ -109,13 +130,27 @@ bool FileOperation::IsAFolder(char *path) {
 }
 //----------------------------------------------------------------------------------------------------
 bool FileOperation::IsAFile(char *path) {
-    struct stat sb;
-    int res = stat(path, &sb);
 
-    if (res == 0){
-        return S_ISREG(sb.st_mode);
-    }
-    return false;
+
+#ifdef __unix__
+	struct stat sb;
+	int res = stat(path, &sb);
+
+	if (res == 0) {
+		return S_ISREG(sb.st_mode);
+	}
+	return false;
+#elif defined _WIN32
+	DWORD ftyp = GetFileAttributesA(path);
+	if (ftyp == INVALID_FILE_ATTRIBUTES)
+		return false;  //something is wrong with your path!
+
+	if (ftyp & FILE_ATTRIBUTE_NORMAL)
+		return true;   
+
+	return false;    
+#endif
+
 }
 //----------------------------------------------------------------------------------------------------
 long FileOperation::FileSize(char *filePath) {
